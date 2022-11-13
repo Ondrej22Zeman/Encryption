@@ -1,14 +1,12 @@
 import java.util.Arrays;
 
 public class Decryption {
-    public Decryption(Character[] alphabet, int numberOfCycles) {
+    public Decryption(Character[] alphabet) {
         this.alphabet = alphabet;
-        this.numberOfCycles = numberOfCycles;
     }
     private final Character[] alphabet;
-    private final int numberOfCycles;
 
-    public String decrypt(String message, int key) {
+    public String decrypt(String message, int key, int numberOfCycles) {
         int passCharIndex;
         char revealedCharIndex;
         final StringBuilder decryptedMessage = new StringBuilder();

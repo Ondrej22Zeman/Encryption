@@ -3,14 +3,13 @@ import java.util.Arrays;
 public class Encryption {
 
     private final Character[] alphabet;
-    private final int numberOfCycles;
 
-    public Encryption(Character[] alphabet, int numberOfCycles) {
+    public Encryption(Character[] alphabet) {
         this.alphabet = alphabet;
-        this.numberOfCycles = numberOfCycles;
     }
 
-    public String encrypt(String message, int key) {
+
+    public String encrypt(String message, int key, int numberOfCycles) {
         final StringBuilder encryptedMessage = new StringBuilder();
         char tempChar;
         boolean isUppercase;
