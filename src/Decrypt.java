@@ -30,59 +30,71 @@ public class Decrypt extends JFrame {
         OpenFile file = new OpenFile();
         checkNormalCzechAlphabet.setSelected(true);
 
-        //FileToOpen file = new FileToOpen(imagePanel.getWidth(), imagePanel.getHeight());
-
         loadMessageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 file.chooseFile();
-
-                //Decrypt.this.image.setIcon(file.scaleImage());
             }
         });
-        //Tlačítko na dekrypci
         decryptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Alphabet a = new Alphabet();
+                //kotrola zda je klíč číslo/není prázdný
                 if (a.checkDigits(keyTextField.getText()) || Objects.equals(keyTextField.getText(), "")) {
+                    //kotrola zda je iterace číslo/není prázdný
                     if (a.checkDigits(iterationTextField.getText()) || Objects.equals(iterationTextField.getText(), "")) {
                         //Kontrola, zda je soubor vybrán úspěšně
                         if (file.isFileIsLoaded()) {
+
+                            //výběr abecedy podle checkboxu
                             Character[] alphabet;
                             if (checkNormalCzechAlphabet.isSelected()) {
                                 alphabet = a.getNormalCzechAlphabet();
-                            } else {
+                            } else if (checkAdvancedCzechAlphabet.isSelected()) {
                                 alphabet = a.getAdvancedCzechAlphabet();
+                            } else if (checkNormalSlovakAlphabet.isSelected()) {
+                                alphabet = a.getNormalSlovakAlphabet();
+                            } else if (checkAdvancedSlovakAlphabet.isSelected()) {
+                                alphabet = a.getAdvancedSlovakAlphabet();
+                            } else {
+                                alphabet = a.getNormalEnglishAlphabet();
                             }
+
+                            //počet iterací
                             int iterations;
                             if (Objects.equals(iterationTextField.getText(), "")) {
                                 iterations = 1;
                             } else {
-                                iterations = Integer.parseInt(keyTextField.getText());
+                                iterations = Integer.parseInt(iterationTextField.getText());
                             }
+                            System.out.println(iterations);
+
+                            //klíč
                             int key;
-                            if (Objects.equals(iterationTextField.getText(), "")) {
+                            if (Objects.equals(keyTextField.getText(), "")) {
                                 key = 1;
                             } else {
                                 key = Integer.parseInt(keyTextField.getText());
                             }
-                            Decryption decryption = new Decryption(alphabet);
+
+                            DecryptMessage decryptMessage = new DecryptMessage(alphabet);
                             String messageToEncrypt = null;
                             try {
                                 messageToEncrypt = file.readFileContent();
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
-                            String decryptedMessage = decryption.decrypt(messageToEncrypt, key, iterations);
+                            String decryptedMessage = decryptMessage.decrypt(messageToEncrypt, key, iterations);
                             decryptedMessageField.setText(decryptedMessage);
-                        } else JOptionPane.showMessageDialog(null, "ERROR: Please choose image before encrypting");
+                        } else JOptionPane.showMessageDialog(null, "ERROR: Vyberte prosím soubor");
                     } else JOptionPane.showMessageDialog(null, "ERROR: Zadejte iterace ve formě čísla");
                 } else JOptionPane.showMessageDialog(null, "ERROR: Zadejte klíč ve formě čísla");
+
             }
         });
 
-        //Tlačítko na vrácení se zpátky
+        //Tlačítko zpět
         goBackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -95,9 +107,9 @@ public class Decrypt extends JFrame {
         });
 
         checkNormalCzechAlphabet.addActionListener(new ActionListener() {
-            boolean isSelected = checkNormalCzechAlphabet.isSelected();
             @Override
             public void actionPerformed(ActionEvent e) {
+                boolean isSelected = checkNormalCzechAlphabet.isSelected();
                 makeSureOnlyOneCheckIsSelected("checkNormalCzechAlphabet");
 
                 if (!isSelected){
@@ -148,6 +160,7 @@ public class Decrypt extends JFrame {
 
 
     }
+    //funkce zajišťující aby aspoň jedna abeceda byla vybrána
     private void makeSureOneCheckIsSelected(){
         if (    !checkNormalCzechAlphabet.isSelected() &&
                 !checkAdvancedCzechAlphabet.isSelected() &&
@@ -157,7 +170,7 @@ public class Decrypt extends JFrame {
             checkNormalCzechAlphabet.setSelected(true);
         }
     }
-
+    //funkce zajišťující výběr pouze jednoho checkboxu
     private void makeSureOnlyOneCheckIsSelected(String check){
         switch (check) {
             case "checkNormalCzechAlphabet" -> {

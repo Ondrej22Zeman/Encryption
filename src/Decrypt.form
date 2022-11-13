@@ -74,24 +74,28 @@
                   <text value="Klíč: "/>
                 </properties>
               </component>
-              <component id="f6829" class="javax.swing.JPasswordField" binding="keyTextField">
+              <component id="b7401" class="javax.swing.JTextField" binding="keyTextField">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <minimum-size width="350" height="-1"/>
+                    <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
                 <properties>
                   <font size="16"/>
+                  <text value=""/>
+                  <toolTipText value="výchozí hodnota je 1"/>
                 </properties>
               </component>
-              <component id="f4e95" class="javax.swing.JPasswordField" binding="iterationTextField">
+              <component id="64837" class="javax.swing.JTextField" binding="iterationTextField">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <minimum-size width="350" height="-1"/>
+                    <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
                 <properties>
                   <font size="16"/>
+                  <text value=""/>
+                  <toolTipText value="výchozí hodnota je 1"/>
                 </properties>
               </component>
             </children>
@@ -143,30 +147,30 @@
           <grid id="7cdf2" binding="checkPanel" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
             <border type="none"/>
             <children>
               <component id="30adb" class="javax.swing.JCheckBox" binding="checkNormalCzechAlphabet">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Použít standartní českou abecedu - Z42"/>
+                  <text value="Použít standartní českou abecedu"/>
                 </properties>
               </component>
               <component id="2e99" class="javax.swing.JCheckBox" binding="checkNormalSlovakAlphabet">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Použít standartní slovenskou abecedu - Z42"/>
+                  <text value="Použít standartní slovenskou abecedu"/>
                 </properties>
               </component>
               <component id="812b6" class="javax.swing.JCheckBox" binding="checkAdvancedCzechAlphabet">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Použít rozšířenou českou abecedu"/>
@@ -174,7 +178,7 @@
               </component>
               <component id="d1c9" class="javax.swing.JCheckBox" binding="checkNormalEnglishAlphabet">
                 <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Použít standartní anglickou abecedu"/>
@@ -182,10 +186,10 @@
               </component>
               <component id="f2213" class="javax.swing.JCheckBox" binding="checkAdvancedSlovakAlphabet">
                 <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Použít rozšířenou slovenskou abecedu - Z42"/>
+                  <text value="Použít rozšířenou slovenskou abecedu"/>
                 </properties>
               </component>
             </children>

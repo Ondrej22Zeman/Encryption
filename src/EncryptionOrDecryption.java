@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 public class EncryptionOrDecryption extends JFrame {
     private JPanel mainPanel;
     private JPasswordField passwordField;
-    private JButton decryption;
-    private JButton encryption;
+    private JButton decryptButton;
+    private JButton encryptButton;
     private JPanel topPanel;
 
     public EncryptionOrDecryption(String title) {
@@ -17,22 +17,22 @@ public class EncryptionOrDecryption extends JFrame {
         this.pack();
 
         //Tlačítko pro enkrypci
-        encryption.addActionListener(new ActionListener() {
+        encryptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                JFrame encrypt = new Encrypt("Encrypt");
+                JFrame encrypt = new Encrypt("Enkryptování");
                 encrypt.setLocationRelativeTo(null);
                 encrypt.setVisible(true);
                 dispose();
             }
         });
         //Tlačítko pro dekrypci
-        decryption.addActionListener(new ActionListener() {
+        decryptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                JFrame decrypt = new Decrypt("Decrypt");
+                JFrame decrypt = new Decrypt("Dekryptování");
                 decrypt.setLocationRelativeTo(null);
                 decrypt.setVisible(true);
                 dispose();

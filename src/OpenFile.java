@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
 import java.util.Objects;
 
@@ -18,28 +19,29 @@ public class OpenFile {
     public OpenFile() {
     }
 
+    //výběr souboru
     public void chooseFile() {
         JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt", "txt", "text");
+        fileChooser.setFileFilter(filter);
         fileIsLoaded = false;
         boolean isTxt = false;
 
 
-        //Při výběru jiného formátu než je formát obrázku, bude požadovat nový soubor
+        //Při výběru jiného formátu než je formát .txt, bude požadovat nový soubor
         while (!isTxt) {
-
-            //výběr místa obrázku
+            //výběr místa souboru
             int response = fileChooser.showOpenDialog(null);
-
             //Při kliknutí na "cancel" se dialog vypne
             if (response == JFileChooser.CANCEL_OPTION) {
                 break;
             }
 
-            //Ověření zda byl obrázek úspěšně vybrán
+            //Ověření zda byl soubor úspěšně vybrán
             if (response == JFileChooser.APPROVE_OPTION) {
-                // Získání cesty k obrázku
+                // Získání cesty k souboru
                 file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-                //Ověřuje, zda byl otevřen obrázek
+                //Ověřuje, zda byl otevřen soubor
                 if (checkTxt(file.getAbsolutePath())) {
                     isTxt = true;
                     fileIsLoaded = true;
@@ -49,21 +51,17 @@ public class OpenFile {
             }
         }
     }
-
+    //přečtení souboru a uložení do zprávy
     public String readFileContent() throws IOException {
         StringBuilder message = new StringBuilder();
         BufferedReader br = new BufferedReader(new FileReader(file));
 
-        // Declaring a string variable
         String st;
-        // Condition holds true till
-        // there is character in a string
         while ((st = br.readLine()) != null)
-
-            // Print the string
             message.append(st);
         return message.toString();
     }
+    //kontrola zda se jedná o .txt soubor
     public boolean checkTxt(String path) {
         int counter = 0;
         for (int i = 0; i < path.length(); i++) {

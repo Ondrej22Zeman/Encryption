@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
-public class Decryption {
-    public Decryption(Character[] alphabet) {
+public class DecryptMessage {
+    public DecryptMessage(Character[] alphabet) {
         this.alphabet = alphabet;
     }
     private final Character[] alphabet;
